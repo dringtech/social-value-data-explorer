@@ -1,0 +1,1 @@
+<h2>Equality, Diversity and Inclusion</h2>
