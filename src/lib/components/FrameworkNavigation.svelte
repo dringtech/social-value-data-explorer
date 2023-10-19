@@ -1,6 +1,7 @@
 <script lang='ts'>
+  import { base } from '$app/paths';
 	export let tree;
-	const siteRoot = '/framework';
+	const siteRoot = (base || '') + '/framework';
 	const getLink = (...segments) => [siteRoot, ...segments, ''].join('/');
 </script>
 
