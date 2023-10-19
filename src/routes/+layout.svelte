@@ -1,8 +1,12 @@
+<script>
+  import { base } from '$app/paths';
+</script>
+
 <div class='page-header'><header>
-	<h1><a href="/">CHY Social Value Data Explorer</a></h1>
+	<h1><a href="{base}/">CHY Social Value Data Explorer</a></h1>
 </header>
 <nav>
-	<ul><li><a href="/framework/">Framework</a></li></ul>
+	<ul><li><a href="{base}/framework/">Framework</a></li></ul>
 </nav>
 </div>
 <main>
