@@ -9,6 +9,8 @@
 	</nav>
 	<article>
 		<slot />
+    <p>This is a prototype site.</p>
+    lorem
 	</article>
 </div>
 

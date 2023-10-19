@@ -1,1 +1,1 @@
-<p>Welcome to the CHY framework</p>
+<h2>Framework Prototype</h2>

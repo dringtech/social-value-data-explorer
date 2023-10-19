@@ -5,28 +5,28 @@
       "title": "Skills & Education",
       "outcomes": [
         {
-          "id": "apprencices",
+          "id": "apprentices",
           "title": "Apprentices"
         },
         {
-          "title": "WorkExperience",
-          "id": "work-experience"
+          "id": "work-experience",
+          "title": "Work Experience"
         },
         {
-          "title": "Trainees",
-          "id": "trainees"
+          "id": "trainees",
+          "title": "Trainees"
         },
         {
-          "title": "EducationWorkshopVisits",
-          "id": "education-workshop-visits"
+          "id": "education-workshop-visits",
+          "title": "Education Workshop Visits"
         },
         {
-          "title": "CPD",
-          "id": "continuing-professional-development"
+          "id": "continuing-professional-development",
+          "title": "CPD"
         },
         {
-          "title": "Qualification",
-          "id": "qualification"
+          "id": "qualification",
+          "title": "Qualification"
         }
       ]
     },
@@ -35,12 +35,12 @@
       "title": "Employment & Enterprise",
       "outcomes": [
         {
-          "title": "Employment",
-          "id": "employment"
+          "id": "employment",
+          "title": "Employment"
         },
         {
-          "title": "BusinessSupport",
-          "id": "business-support"
+          "id": "business-support",
+          "title": "BusinessSupport"
         }
       ]
     },
@@ -49,12 +49,12 @@
       "title": "Community Engagement",
       "outcomes": [
         {
-          "title": "Volunteering",
-          "id": "volunteering"
+          "id": "volunteering",
+          "title": "Volunteering"
         },
         {
-          "title": "Contributions",
-          "id": "contributions"
+          "id": "contributions",
+          "title": "Contributions"
         }
       ]
     },
@@ -63,12 +63,12 @@
       "title": "Health & Wellbeing",
       "outcomes": [
         {
-          "title": "Mental_Health",
-          "id": "mental-health"
+          "id": "mental-health",
+          "title": "Mental Health"
         },
         {
-          "title": "Physical_Health",
-          "id": "physical-health"
+          "id": "physical-health",
+          "title": "Physical Health"
         }
       ]
     },
@@ -77,8 +77,8 @@
       "title": "Equality, Diversity & Inclusion",
       "outcomes": [
         {
-          "title": "Increased_EDI",
-          "id": "increased-edi"
+          "id": "increased-edi",
+          "title": "Increased EDI"
         }
       ]
     },
@@ -87,12 +87,12 @@
       "title": "Climate Change",
       "outcomes": [
         {
-          "title": "Waste_Reduction",
-          "id": "waste-reduction"
+          "id": "waste-reduction",
+          "title": "Waste Reduction"
         },
         {
-          "title": "CO2_Reduction",
-          "id": "co2-reduction"
+          "id": "co2-reduction",
+          "title": "CO2 Reduction"
         }
       ]
     }

@@ -3,7 +3,7 @@
 </script>
 
 <div class='page-header'><header>
-	<h1><a href="{base}/">CHY Social Value Data Explorer</a></h1>
+	<h1><a href="{base}/">Social Value Data Explorer</a></h1>
 </header>
 <nav>
 	<ul><li><a href="{base}/framework/">Framework</a></li></ul>
