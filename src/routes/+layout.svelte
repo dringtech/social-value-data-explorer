@@ -1,5 +1,6 @@
 <script>
   import { base } from '$app/paths';
+  import '$lib/style.css';
 </script>
 
 <div class='page-header'><header>
