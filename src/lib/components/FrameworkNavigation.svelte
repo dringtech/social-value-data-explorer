@@ -5,7 +5,7 @@
 	const getLink = (...segments) => [siteRoot, ...segments, ''].join('/');
 </script>
 
-<ul class:hide={!open}>
+<ul>
   <li class="level-1"><a href={siteRoot}>Home</a></li>
   {#each tree.themes as theme (theme.id)}
     <li class="level-1">
