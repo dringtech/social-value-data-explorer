@@ -1,1 +1,0 @@
-<h2>Climate Change</h2>
