@@ -3,6 +3,15 @@
   import L from 'leaflet';
   import 'leaflet/dist/leaflet.css';
   
+  import markerIconUrl from "leaflet/dist/images/marker-icon.png";
+  import markerIconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
+  import markerShadowUrl from "leaflet/dist/images/marker-shadow.png";
+  
+  L.Icon.Default.prototype.options.iconUrl = markerIconUrl;
+  L.Icon.Default.prototype.options.iconRetinaUrl = markerIconRetinaUrl;
+  L.Icon.Default.prototype.options.shadowUrl = markerShadowUrl;
+  L.Icon.Default.imagePath = ""; // necessary to avoid Leaflet adds some prefix to image path.
+
   export let baseLayer;
   export let labelLayer = undefined;
   
