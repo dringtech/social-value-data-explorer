@@ -27,30 +27,26 @@
 	const getConnection = loadDb();
 
 	let searchString = '';
+  let places = [];
 
 	$: placeQuery = new Promise(() => {});
 	$: findPlace(searchString);
 
 	async function findPlace(name) {
-		if (name.length < 2) {
-			placeQuery = Promise.reject(
-				new Error('Please enter a search string of more than two letters')
-			);
-			return;
-		}
 		const conn = await getConnection;
 		placeQuery = conn
 			.query(
 				`
           SELECT
-          LAD22CD,
-          LAD22NM,
-          LONG,
-          LAT,
+          LAD22CD AS code,
+          LAD22NM AS name,
+          {
+            'lng': LONG,
+            'lat': LAT
+          } AS latLng
           FROM read_parquet('lad22.parquet')
           WHERE
-          LAD22NM ILIKE '${name}%'
-          LIMIT 100;
+          LAD22NM ILIKE '${name}%';
         `
 			)
 			.then((result) => result.toArray().map((row) => row.toJSON()))
@@ -59,15 +55,13 @@
 					throw new Error('No places found');
 				}
 				return result;
-			})
-			.then((result) => {
-				const features = result.map((x) => ({
-          ...x,
-          id: x.LAD22CD,
-          coordinates: { lat: x.LAT, lng: x.LONG },
-				}));
-				return features;
 			});
+
+    try {
+      places = await placeQuery;
+    } catch {
+      places = [];
+    }
 	}
 </script>
 
@@ -86,19 +80,15 @@
 
 <div id="map">
 	<Leaflet bind:map bounds={uk} baseLayer={greyscale} labelLayer={lightCarto} >
-    {#await placeQuery then places}
-      {#each places as place (place.id)}
-        <Marker latLng={ place.coordinates }></Marker>
-      {/each}
-    {/await}
+    {#each places as place (place.code)}
+      <Marker latLng={ place.latLng }></Marker>
+    {/each}
   </Leaflet>
 </div>
 
-<code><pre>
-{#await placeQuery then places}{JSON.stringify(places)}{/await}
-</pre></code>
-
-
+<pre>
+{JSON.stringify(places, null, 2)}
+</pre>
 <style>
 	#map {
 		width: 100%;
