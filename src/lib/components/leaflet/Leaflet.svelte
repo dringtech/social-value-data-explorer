@@ -12,6 +12,7 @@
   L.Icon.Default.prototype.options.shadowUrl = markerShadowUrl;
   L.Icon.Default.imagePath = ""; // necessary to avoid Leaflet adds some prefix to image path.
 
+  export let mapId;
   export let baseLayer;
   export let labelLayer = undefined;
   
@@ -72,7 +73,7 @@
   }
 </style>
 
-<div use:createLeaflet>
+<div id={mapId} use:createLeaflet>
   {#if map}
     <slot {map} />
   {/if}
