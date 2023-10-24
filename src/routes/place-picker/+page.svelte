@@ -29,7 +29,7 @@
 	let searchString = '';
 
 	$: placeQuery = new Promise(() => {});
-	$: places = await findPlace(searchString);
+	$: findPlace(searchString);
 
 	async function findPlace(name) {
 		if (name.length < 2) {
@@ -86,16 +86,16 @@
 
 <div id="map">
 	<Leaflet bind:map bounds={uk} baseLayer={greyscale} labelLayer={lightCarto} >
-    <!-- {#await placeQuery then places} -->
+    {#await placeQuery then places}
       {#each places as place (place.id)}
         <Marker latLng={ place.coordinates }></Marker>
       {/each}
-    <!-- {/await} -->
+    {/await}
   </Leaflet>
 </div>
 
 <code><pre>
-{JSON.stringify(places)}
+{#await placeQuery then places}{JSON.stringify(places)}{/await}
 </pre></code>
 
 
