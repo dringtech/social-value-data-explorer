@@ -26,7 +26,9 @@
   $: if (latLng && marker) {
       marker.setLatLng(latLng);
     } else if (latLng) {
-      marker = L.marker(latLng, { icon }).addTo(layerGroup);
+      const opts = {};
+      if (icon) opts.icon = icon;
+      marker = L.marker(latLng, opts).addTo(layerGroup);
     } else if (marker) {
       destroy();
     }
