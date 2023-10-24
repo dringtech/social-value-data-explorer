@@ -1,14 +1,5 @@
 <script>
-	import { initDB } from '$lib/duckdb';
-	import { base } from '$app/paths';
-
-	async function loadDb() {
-		console.log('LOADING DB');
-		const db = await initDB();
-		await db.registerFileURL('places.parquet', `${base}/places.parquet`, 4, false);
-		const conn = await db.connect();
-		return conn;
-	}
+  import { loadDb } from '$lib/db';
 
 	// Set up the db connection as an empty promise.
 	const getConnection = loadDb();

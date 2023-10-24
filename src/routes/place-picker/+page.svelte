@@ -1,29 +1,16 @@
 <script>
-	import { initDB } from '$lib/duckdb';
-	import { base } from '$app/paths';
-	import Leaflet from '$lib/components/leaflet/Leaflet.svelte';
+  import { loadDb } from '$lib/db';
+
+  import Leaflet from '$lib/components/leaflet/Leaflet.svelte';
 	import Marker from '$lib/components/leaflet/Marker.svelte';
 	// import GeoJson from '$lib/components/leaflet/GeoJson.svelte';
-	let map;
 	import { uk } from '$lib/maps/bounds';
 	import { greyscale } from '$lib/maps/basemaps';
 	import { lightCarto } from '$lib/maps/labels';
+  
+	let map;
 
-	async function loadDb() {
-		console.log('LOADING DB');
-		const db = await initDB();
-		// await db.registerFileURL('lad22.geojson', `${base}/lad22.geojson`, 4, false);
-		await db.registerFileURL('lad22.parquet', `${base}/lad22.parquet`, 4, false);
-		const conn = await db.connect();
-		// await conn.query(`
-		// -- spatial not officially available for WASM
-		//   -- INSTALL spatial;
-		//   LOAD spatial;
-		// `);
-		return conn;
-	}
-
-	// Set up the db connection as an empty promise.
+  // Set up the db connection as an empty promise.
 	const getConnection = loadDb();
 
 	let searchString = '';
