@@ -1,43 +1,32 @@
-<script>
-  import { loadDb } from '$lib/db';
+<script async>
+  import { getContext } from 'svelte';
+  import { runQuery } from '$lib/db';
+  import { numberFormatter, dateFormatter } from '$lib/formatters';
 
-	// Set up the db connection as an empty promise.
-	const getConnection = loadDb();
+  const place = getContext('place');
 
-	let searchString = 'Bradford';
-	$: results = new Promise(() => {});
-	$: findPlace(searchString);
-
-	async function findPlace(name) {
-    if (name.length < 2) {
-      results = Promise.resolve({
-        status: 'Search string is too short',
-        data: []
-      })
-      return;
-    } 
-		const conn = await getConnection;
-		results = conn.query(`
-      SELECT *
-      FROM read_parquet('places.parquet')
-      WHERE name ILIKE '${name}%'
-      AND "feature code" LIKE 'PPL%'
-      LIMIT 100;
-    `).then(
-      result => ({
-        data: result.toArray().map((row) => row.toJSON())
-      })
-    );
-	}
+  $: starts = runQuery(`
+    PIVOT (
+      SELECT
+        geo_code,
+        value::DOUBLE as value,
+        strftime(date, '%x') AS date
+      FROM read_parquet('data.parquet')
+      WHERE geo_code == '${$place}'
+      AND variable == 'starts'
+    )
+    ON geo_code
+    USING SUM(value)
+    GROUP BY date;
+  `);
 </script>
 
-<div>
-	<label for="place">Place:</label>
-	<input id="place" bind:value={searchString} type="text" />
-</div>
-
-{#await results}
-	<p>Querying database</p>
-{:then result}
-	<code><pre>{JSON.stringify(result.data, null, 2)}</pre></code>
+{#await starts}
+<p>Running query</p>
+{:then rows}
+<ul>
+{#each rows as row}
+  <li>{ numberFormatter(row[$place]) } apprenticeship starts in the academic year to { dateFormatter(row.date) }</li>
+{/each}
+</ul>
 {/await}
