@@ -12,7 +12,7 @@
   This theme defines the following outcomes:
 </p>
 
-<ul>
+<ul class='auto-grid'>
 {#each data.theme.outcomes as outcome (outcome.id)}
   <li><a href={ './' + outcome.id }>{ outcome.title }</a></li>
 {/each}

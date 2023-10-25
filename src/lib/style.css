@@ -77,3 +77,25 @@ button:active {
   left: 0.2em;
   box-shadow: 0.2em 0.2em;
 }
+
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+  gap: 1em;
+  list-style: none;
+}
+
+.auto-grid > * {
+  margin-block-start: 0;
+}
+
+.auto-grid li {
+  color: yellow;
+  background: black;
+  padding: 1em;
+  min-height: 5ex;
+}
+
+.auto-grid a {
+  color: inherit;
+}
