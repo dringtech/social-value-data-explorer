@@ -1,7 +1,14 @@
 import { initDB } from './duckdb';
 import { base } from '$app/paths';
+import { AsyncDuckDBConnection } from '@duckdb/duckdb-wasm';
+
+let getConnection: Promise<AsyncDuckDBConnection>;
 
 export async function loadDb() {
+  if (getConnection) {
+    console.log('ALREADY LOADING DB');
+    return getConnection;
+  }
   console.log('LOADING DB');
   const db = await initDB();
 
@@ -14,7 +21,7 @@ export async function loadDb() {
   return conn;
 }
 
-const getConnection = loadDb();
+getConnection = loadDb();
 
 export async function runQuery(sql: string) {
   const conn = await getConnection;
