@@ -4,6 +4,10 @@
   import { numberFormatter, dateFormatter } from '$lib/formatters';
 
   import Loading from '$lib/components/Loading.svelte';
+  import Frame from '$lib/components/chart/Frame.svelte';
+  import Line from '$lib/components/chart/Line.svelte';
+  import XAxis from '$lib/components/chart/XAxis.svelte';
+  import YAxis from '$lib/components/chart/YAxis.svelte';
 
   const place = getContext('place');
 
@@ -26,9 +30,9 @@
 {#await starts}
 <Loading />
 {:then rows}
-<ul>
-{#each rows as row}
-  <li>{ numberFormatter(row[$place]) } apprenticeship starts in the academic year to { dateFormatter(row.date) }</li>
-{/each}
-</ul>
+<Frame width=300>
+  <XAxis/>
+  <YAxis/>
+  <Line values={rows.map(x => x[$place])} max=10000></Line>
+</Frame>                                                                      
 {/await}
