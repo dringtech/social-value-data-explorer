@@ -1,3 +1,8 @@
+@import '$lib/css/reset.css';
+@import '$lib/css/base.css';
+@import '$lib/css/form.css';
+@import '$lib/css/auto-grid.css';
+
 :root {
   --ratio: 1.5;
   --s-5: calc(var(--s-4) / var(--ratio));
@@ -21,25 +26,6 @@
 	}
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-html {
-  font-family: monospace;
-  font-size: 100%;
-}
-body {
-  font-size: 1.5rem;
-}
-
-button {
-  font: unset;
-  background: unset;
-}
-
 .center {
   box-sizing: content-box;
   max-inline-size: 60ch;
@@ -52,50 +38,3 @@ article * + * {
   margin-top: 1.5em;
 }
 
-input {
-  font: inherit;
-  border: 1px solid #aaa;
-  padding: 0.2em;
-}
-
-button {
-  position: relative;
-  color: yellow;
-  background-color: #333;
-  padding: 0.5em;
-  border-radius: 0.2em;
-  top: 0;
-  left: 0;
-  box-shadow: 0.4em 0.4em;
-  margin-block-end: 0.4em;
-}
-button:hover {
-  color: orange;
-}
-button:active {
-  top: 0.2em;
-  left: 0.2em;
-  box-shadow: 0.2em 0.2em;
-}
-
-.auto-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
-  gap: 1em;
-  list-style: none;
-}
-
-.auto-grid > * {
-  margin-block-start: 0;
-}
-
-.auto-grid li {
-  color: yellow;
-  background: black;
-  padding: 1em;
-  min-height: 5ex;
-}
-
-.auto-grid a {
-  color: inherit;
-}

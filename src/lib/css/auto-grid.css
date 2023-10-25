@@ -1,0 +1,21 @@
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+  gap: 1em;
+  list-style: none;
+  & > * {
+    margin-block-start: 0;
+  }
+  & li {
+    color: yellow;
+    background: black;
+    padding: 1em;
+    min-height: 5ex;
+  }
+  & a {
+    color: inherit;
+  }
+}
+
+
+
