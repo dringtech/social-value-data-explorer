@@ -68,7 +68,7 @@
   aside {
     color: black;
     background: yellow;
-    padding: 0.5em;
+    padding-block: 0.5em;
   }
 	main {
 		padding-block: 2ch;

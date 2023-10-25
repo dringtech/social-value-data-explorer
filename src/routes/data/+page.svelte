@@ -3,6 +3,8 @@
   import { runQuery } from '$lib/db';
   import { numberFormatter, dateFormatter } from '$lib/formatters';
 
+  import Loading from '$lib/components/Loading.svelte';
+
   const place = getContext('place');
 
   $: starts = runQuery(`
@@ -22,7 +24,7 @@
 </script>
 
 {#await starts}
-<p>Running query</p>
+<Loading />
 {:then rows}
 <ul>
 {#each rows as row}
