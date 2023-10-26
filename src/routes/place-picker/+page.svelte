@@ -44,7 +44,7 @@
             'lng': LONG,
             'lat': LAT
           } AS latLng
-          FROM read_parquet('lad22.parquet')
+          FROM read_parquet('autoload-data/lad22.parquet')
           WHERE
           LAD22NM ILIKE '${name}%';
         `

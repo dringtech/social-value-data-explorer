@@ -1,6 +1,6 @@
 <script async>
   import { getContext } from 'svelte';
-  import { runQuery } from '$lib/db';
+  import { runQuery, loadDb } from '$lib/db';
   import { numberFormatter, dateFormatter } from '$lib/formatters';
 
   import Loading from '$lib/components/Loading.svelte';
@@ -11,13 +11,15 @@
 
   const place = getContext('place');
 
+  $: files = runQuery(`SELECT * from glob('*');`);
+
   $: starts = runQuery(`
     PIVOT (
       SELECT
         geo_code,
         value::DOUBLE as value,
         strftime(date, '%x') AS date
-      FROM read_parquet('data.parquet')
+      FROM read_parquet('autoload-data/data.parquet')
       WHERE geo_code == '${$place}'
       AND variable == 'starts'
     )
@@ -36,3 +38,8 @@
   <Line values={rows.map(x => x[$place])} max=10000></Line>
 </Frame>                                                                      
 {/await}
+
+<pre>
+{#await files then f}{JSON.stringify(f, null, 2)}{/await}
+</pre>
+

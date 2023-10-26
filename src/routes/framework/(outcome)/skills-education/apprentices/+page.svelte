@@ -17,7 +17,7 @@
         geo_code,
         value::DOUBLE as value,
         strftime(date, '%x') AS date
-      FROM read_parquet('data.parquet')
+      FROM read_parquet('autoload-data/data.parquet')
       WHERE geo_code == '${$place}'
       AND variable == 'starts'
     )
