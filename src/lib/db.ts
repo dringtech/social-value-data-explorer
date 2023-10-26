@@ -2,11 +2,7 @@ import { initDB } from './duckdb';
 import { base } from '$app/paths';
 import { AsyncDuckDBConnection } from '@duckdb/duckdb-wasm';
 
-const defaultFiles = [
-  'autoload-data/places.parquet',
-  'autoload-data/lad22.parquet',
-  'autoload-data/data.parquet'
-]
+import files from './data-manifest.json';
 
 let getConnection: Promise<AsyncDuckDBConnection>;
 
@@ -19,7 +15,7 @@ export async function loadDb() {
   const db = await initDB();
 
   await Promise.all(
-    defaultFiles.map((f) => {
+    files.map((f) => {
       db.registerFileURL(f, `${base}/${f}`, 4, false);
     })
   )
@@ -36,6 +32,4 @@ export async function runQuery(sql: string) {
     .then(
       result => result.toArray().map((row) => row.toJSON())
     )
-} 
-
-
+}
