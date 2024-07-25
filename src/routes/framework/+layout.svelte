@@ -1,7 +1,10 @@
-<article>
-	<p>This is a prototype site.</p>
-	<slot />
-</article>
+<script lang="ts">
+	import PlaceBar from "$lib/components/PlaceBar.svelte";
+</script>
+
+<PlaceBar/>
+<p>This is a prototype site.</p>
+<slot />
 
 <style>
 	@keyframes fade-in {
