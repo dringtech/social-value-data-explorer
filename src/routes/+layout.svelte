@@ -6,7 +6,6 @@
 	import place from '$lib/stores/place';
 
 	import '$lib/style.css';
-	import PlaceBar from '../lib/components/PlaceBar.svelte';
 
 	setContext('place', place);
 
