@@ -4,12 +4,14 @@ on:
   push:
     branches: 'main'
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
-  build_site:
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
 
     steps:
       - name: Checkout
@@ -33,7 +35,7 @@ jobs:
       - name: Deploy to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: chy-data-explorer
+          project: c2fcace4-a205-403b-bd0d-b977bde4bebe
           entrypoint: serve.ts
           include: |
             serve.ts
