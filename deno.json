@@ -3,7 +3,7 @@
     "serve": "deno run --watch --allow-read --allow-net serve.ts"
   },
   "deploy": {
-    "project": "c2fcace4-a205-403b-bd0d-b977bde4bebe",
+    "project": "chy-data-explorer",
     "exclude": [
       "**/node_modules",
       "**/static"

@@ -12,7 +12,7 @@
 		"test:integration": "playwright test",
 		"test:unit": "vitest",
 		"predeploy": "npm run build",
-		"deploy": ""
+		"deploy": "deployctl deploy --prod"
 	},
 	"devDependencies": {
 		"@duckdb/duckdb-wasm": "^1.27.1-dev125.0",
