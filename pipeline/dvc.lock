@@ -1,0 +1,29 @@
+schema: '2.0'
+stages:
+  prepare-apprenticeships:
+    cmd: papermill apprenticeships.ipynb -
+    deps:
+    - path: apprenticeships.ipynb
+      hash: md5
+      md5: e999bcaf68f09ab57250615dc23b523c
+      size: 7333
+    outs:
+    - path: ../static/autoload-data/apprenticeships/
+      hash: md5
+      md5: dd0ff7efb27f346273807d259efc4612.dir
+      size: 653488
+      nfiles: 159
+  build-index:
+    cmd: find static/autoload-data/ -type f | cut -d/ -f2- | jq --raw-input --slurp
+      'split("\n")' > src/lib/data-manifest.json
+    deps:
+    - path: static/autoload-data/
+      hash: md5
+      md5: 976792f3ea9ad1bb5b1f9bc96fb0f20b.dir
+      size: 33487589
+      nfiles: 163
+    outs:
+    - path: src/lib/data-manifest.json
+      hash: md5
+      md5: c9802b4ebc4238a13af5930411deede9
+      size: 15556

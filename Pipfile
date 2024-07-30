@@ -10,6 +10,8 @@ ipykernel = "*"
 pyarrow = "*"
 geopandas = "*"
 bs4 = "*"
+dvc = "*"
+papermill = "*"
 
 [dev-packages]
 

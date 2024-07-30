@@ -1,0 +1,21 @@
+vars:
+  - ROOT: ..
+stages:
+  prepare-apprenticeships:
+    cmd: papermill apprenticeships.ipynb -
+    deps:
+      - apprenticeships.ipynb
+    outs:
+      - ${ROOT}/static/autoload-data/apprenticeships/:
+          cache: false
+          persist: false
+
+  build-index:
+    cmd: find static/autoload-data/ -type f | cut -d/ -f2- | jq --raw-input --slurp 'split("\n")' > src/lib/data-manifest.json
+    wdir: ${ROOT}
+    deps:
+      - static/autoload-data/
+    outs:
+      - src/lib/data-manifest.json:
+          cache: false
+          persist: false

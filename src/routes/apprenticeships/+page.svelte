@@ -1,16 +1,20 @@
 <script lang="ts">
 	import { runQuery } from '$lib/db';
-	import Loading from '$lib/components/Loading.svelte';
+    import Loading from '$lib/components/Loading.svelte';
     import LineChart from '$lib/components/chart/LineChart.svelte';
     import { academicYearFormatter } from '$lib/formatters';
 
+    const ons_code = 'E06000014';
+
     $: starts = runQuery(`
         PIVOT (
-            SELECT year_start::DATE AS year, apps_level AS level, CAST(starts AS INTEGER) AS starts
-            FROM read_parquet('autoload-data/apprenticeships_by_year.parquet')
+            SELECT year::DATE as year, apps_level AS level, CAST(value AS INTEGER) AS value
+            FROM read_parquet('autoload-data/apprenticeships/**/*.parquet')
+            WHERE variable == 'starts'
+            AND ons_code == '${ons_code}'
         )
         ON level
-        USING first(starts)
+        USING first(value)
         GROUP BY year;
     `);
 
