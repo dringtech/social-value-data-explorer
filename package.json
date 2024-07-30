@@ -10,7 +10,9 @@
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
 		"test:integration": "playwright test",
-		"test:unit": "vitest"
+		"test:unit": "vitest",
+		"predeploy": "npm run build",
+		"deploy": ""
 	},
 	"devDependencies": {
 		"@duckdb/duckdb-wasm": "^1.27.1-dev125.0",

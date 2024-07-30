@@ -1,0 +1,17 @@
+{
+  "tasks": {
+    "serve": "deno run --watch --allow-read --allow-net serve.ts"
+  },
+  "deploy": {
+    "project": "c2fcace4-a205-403b-bd0d-b977bde4bebe",
+    "exclude": [
+      "**/node_modules",
+      "**/static"
+    ],
+    "include": [
+      "./serve.ts",
+      "./build/*"
+    ],
+    "entrypoint": "serve.ts"
+  }
+}
