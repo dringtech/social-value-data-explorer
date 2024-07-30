@@ -27,6 +27,7 @@
 	</header>
 	<nav>
 		<ul>
+			<li><a href="{base}/apprenticeships/">Apprenticeships</a></li>
 			<li><a href="{base}/framework/">Framework</a></li>
 		</ul>
 	</nav>

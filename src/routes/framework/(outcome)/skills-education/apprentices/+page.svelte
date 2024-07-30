@@ -4,10 +4,8 @@
 	import { numberFormatter, dateFormatter } from '$lib/formatters';
 
 	import Loading from '$lib/components/Loading.svelte';
-	import Frame from '$lib/components/chart/Frame.svelte';
-	import Line from '$lib/components/chart/Line.svelte';
-	import XAxis from '$lib/components/chart/XAxis.svelte';
-	import YAxis from '$lib/components/chart/YAxis.svelte';
+  import LineChart from '$lib/components/chart/LineChart.svelte';
+	import XAxis from '../../../../../lib/components/chart/building-blocks/XAxis.svelte';
 
 	const place = getContext('place');
 
@@ -16,8 +14,8 @@
       SELECT
         geo_code,
         value::DOUBLE as value,
-        strftime(date, '%x') AS date
-      FROM read_parquet('autoload-data/data/**/*.parquet')
+        date::DATE AS date
+      FROM read_parquet('autoload-data/data.parquet')
       WHERE geo_code == '${$place}'
       AND variable == 'starts'
     )
@@ -25,6 +23,16 @@
     USING SUM(value)
     GROUP BY date;
   `);
+  $: series = [{
+    x: 'date',
+    y: $place,
+  }]
+  $: xAxis = {
+    labelFormatter: (x) => new Date(x).toLocaleDateString(undefined, { year: "numeric" })
+  }
+  $: yAxis = {
+    tickSpacing: 200,
+  }
 </script>
 
 {#await starts}
@@ -35,11 +43,7 @@
   This chart shows the number of apprentices starting by academic year up to { dateFormatter(rows[rows.length-1].date) },
   when there were { numberFormatter(rows[rows.length-1][$place]) } starts.
 </p>
-	<Frame width="50">
-		<XAxis />
-		<YAxis />
-		<Line values={rows.map((x) => x[$place])} max="10000" />
-	</Frame>
+  <LineChart data={ rows } { series } { xAxis } { yAxis }/>
 {:else}
   <p>No data returned for {$place}</p>
 {/if}
