@@ -22,12 +22,12 @@
 </script>
 
 <header>
-	<h1><a href="{base}/">Social Value Data Explorer</a></h1>
+	<a href="{base}/">Social Value Data Explorer</a>
 </header>
 <nav>
 	<ul>
-		<li><a href="{base}/apprenticeships/">Apprenticeships</a></li>
-		<li><a href="{base}/framework/">Framework</a></li>
+		<li><a href="{base}/york-data/">York data</a></li>
+		<!-- <li><a href="{base}/framework/">Framework</a></li> -->
 	</ul>
 </nav>
 
@@ -36,6 +36,11 @@
 </main>
 
 <style>
+	header {
+		font-size: 3em;
+		font-weight: 100;
+		text-align: center;
+	}
 	nav > ul {
 		list-style: none;
 		display: flex;

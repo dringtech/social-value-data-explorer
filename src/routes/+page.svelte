@@ -1,9 +1,13 @@
+<script lang="ts">
+  import { base } from '$app/paths';
+</script>
+
 <article>
   <p>
-    This is a clickable wireframe site exploring the presentation of Social Value data.
+    This is a site hosting a prototype data explorer built for CHY.
   </p>
+  <ul>
+    <li><a href="{ base }/apprenticeships/">Apprenticeships prototype</a></li>
+  </ul>
 
-  <p>
-    At the moment, the only part of the site that is fleshed out is the <a href="./framework">Framework</a>.
-  </p>
 </article>

@@ -29,6 +29,13 @@
     }
 </script>
 
+<h1>York data</h1>
+
+<p>This page shows data related to York.</p>
+
+<h2>Apprenticeships</h2>
+<h3>Construction apprenticeship starts by year</h3>
+
 {#await starts}
     <Loading />
 {:then data}
