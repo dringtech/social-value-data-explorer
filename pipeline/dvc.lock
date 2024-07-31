@@ -19,8 +19,8 @@ stages:
     deps:
     - path: static/autoload-data/
       hash: md5
-      md5: e7371c9155b863f92bc84b9410bace38.dir
-      size: 34654138
+      md5: b4065ac7172fdd3a48a9cfc4213848ff.dir
+      size: 33919013
       nfiles: 164
     outs:
     - path: src/lib/data-manifest.json
@@ -32,14 +32,14 @@ stages:
     deps:
     - path: geo.ipynb
       hash: md5
-      md5: 218e70cd5f5dceefff07e8049f896695
-      size: 2397
+      md5: f3fa97685b8d83222db419ba2a4412db
+      size: 62667
     outs:
     - path: ../src/lib/maps/geojson/lad.json
       hash: md5
-      md5: 8a6e10fefd65e9ea594d800eb164b501
-      size: 1762646
+      md5: 6525eb0fdee3d60e487ad85d38d1043b
+      size: 766342
     - path: ../static/autoload-data/lad.parquet
       hash: md5
-      md5: 66699d7bddc7adae6dd27136408ac21c
-      size: 1166549
+      md5: 9aa672adb49340bd52f44712b8735bbf
+      size: 431424
