@@ -14,7 +14,10 @@ stages:
     deps:
       - geo.ipynb
     outs:
-      - ${ROOT}/static/autoload-data/lad.geojson:
+      - ${ROOT}/src/lib/maps/geojson/lad.json:
+          cache: false
+          persist: false
+      - ${ROOT}/static/autoload-data/lad.parquet:
           cache: false
           persist: false
 

@@ -10,11 +10,12 @@
 	import Popup from '$lib/components/leaflet/Popup.svelte';
 	import Tooltip from '$lib/components/leaflet/Tooltip.svelte';
 	import PlacePopup from '$lib/components/PlacePopup.svelte';
-	// import GeoJson from '$lib/components/leaflet/GeoJson.svelte';
+	import GeoJson from '$lib/components/leaflet/GeoJson.svelte';
 
 	import { uk } from '$lib/maps/bounds';
 	import { greyscale } from '$lib/maps/basemaps';
 	import { lightCarto } from '$lib/maps/labels';
+	import { lad } from '$lib/maps/features';
 
 	let map;
 
@@ -38,15 +39,15 @@
 			.query(
 				`
           SELECT
-          LAD22CD AS code,
-          LAD22NM AS name,
+          LAD24CD AS code,
+          LAD24NM AS name,
           {
             'lng': LONG,
             'lat': LAT
           } AS latLng
-          FROM read_parquet('autoload-data/lad22.parquet')
+          FROM read_parquet('autoload-data/lad.parquet')
           WHERE
-          LAD22NM ILIKE '${name}%';
+          LAD24NM ILIKE '${name}%';
         `
 			)
 			.then((result) => result.toArray().map((row) => row.toJSON()))
@@ -87,6 +88,7 @@
 			<Tooltip>{place.name}</Tooltip>
 		</Marker>
 	{/each}
+	<GeoJson feature={ lad }></GeoJson>
 </Leaflet>
 
 <style>

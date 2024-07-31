@@ -160,7 +160,6 @@
   "autoload-data/apprenticeships/ons_code=E09000015/48d75772bb2346d194eef8afd013020c-0.parquet",
   "autoload-data/apprenticeships/ons_code=E06000037/48d75772bb2346d194eef8afd013020c-0.parquet",
   "autoload-data/lad22.geojson",
-  "autoload-data/lad.geojson",
   "autoload-data/lad22.parquet",
   "autoload-data/lad.parquet",
   "autoload-data/data.parquet",
