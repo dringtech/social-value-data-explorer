@@ -14,10 +14,10 @@
 </aside>
 
 <style>
-    aside {
+    /* aside {
         color: black;
         background: yellow;
         padding-block: 0.5em;
         padding-inline: 1em;
-    }
+    } */
 </style>

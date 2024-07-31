@@ -8,18 +8,6 @@
 	import { lad } from '$lib/maps/features';
 </script>
 
-<div id="map">
-	<Leaflet bind:map bounds={uk} baseLayer={greyscale} labelLayer={lightCarto}>
-		<GeoJson feature={ lad }></GeoJson>
-	</Leaflet>
-</div>
-
-<style>
-	#map {
-		width: 100%;
-		height: 800px;
-		max-height: 80vh;
-		position: relative;
-		margin: 1em 0;
-	}
-</style>
+<Leaflet mapId="map" bind:map bounds={uk} baseLayer={greyscale} labelLayer={lightCarto}>
+	<GeoJson feature={ lad }></GeoJson>
+</Leaflet>

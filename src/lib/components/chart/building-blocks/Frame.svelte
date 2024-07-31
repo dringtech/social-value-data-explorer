@@ -5,7 +5,7 @@
 
   export let width = 400;
   export let aspectRatio = 4/3;
-  const margins = { left: 0.05, right: 0.05, top: 0.05, bottom: 0.05 };
+  const margins = { left: 0.15, right: 0.15, top: 0.15, bottom: 0.15 };
 
   const range = getContext('range');
 
@@ -32,15 +32,8 @@
   setContext('scaler', readonly(scalers));
 </script>
 
-<svg viewBox={ viewBox.join(' ') } xmlns="http://www.w3.org/2000/svg">
+<svg class="dt-viz" viewBox={ viewBox.join(' ') } xmlns="http://www.w3.org/2000/svg">
   <g transform="translate(0 {height}) scale(1 -1)">
     <slot/>
   </g>
 </svg>
-
-<style>
-  svg {
-    aspect-ratio: 1.5;
-    stroke-linecap: round;
-  }
-</style>

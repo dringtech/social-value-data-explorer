@@ -8,7 +8,7 @@
     width: 100%;
     height: 15rem;
     color: black;
-    background: yellow;
+    background: hsl(209, 92%, 46%);
     padding: 1rem;
     display: flex;
     align-items: center;

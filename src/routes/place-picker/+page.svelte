@@ -90,15 +90,3 @@
 	{/each}
 	<GeoJson feature={ lad }></GeoJson>
 </Leaflet>
-
-<style>
-	:global(#map) {
-		width: 100%;
-		height: 800px;
-		max-height: 80vh;
-		position: relative;
-		margin: 1em 0;
-		font-size: 1em;
-		font-family: inherit;
-	}
-</style>
