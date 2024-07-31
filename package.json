@@ -15,7 +15,7 @@
 		"deploy": "deployctl deploy --prod"
 	},
 	"devDependencies": {
-		"@duckdb/duckdb-wasm": "^1.27.1-dev125.0",
+		"@duckdb/duckdb-wasm": "^1.28.1-dev242.0",
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/adapter-static": "^2.0.3",
