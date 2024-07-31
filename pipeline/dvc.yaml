@@ -9,6 +9,14 @@ stages:
       - ${ROOT}/static/autoload-data/apprenticeships/:
           cache: false
           persist: false
+  prepare-maps:
+    cmd: papermill geo.ipynb -
+    deps:
+      - geo.ipynb
+    outs:
+      - ${ROOT}/static/autoload-data/lad.geojson:
+          cache: false
+          persist: false
 
   build-index:
     cmd: find static/autoload-data/ -type f | cut -d/ -f2- | jq --raw-input --slurp 'split("\n")' > src/lib/data-manifest.json

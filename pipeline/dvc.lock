@@ -19,11 +19,23 @@ stages:
     deps:
     - path: static/autoload-data/
       hash: md5
-      md5: 976792f3ea9ad1bb5b1f9bc96fb0f20b.dir
-      size: 33487589
-      nfiles: 163
+      md5: f69813b4c8ad042e99a580cb235461d8.dir
+      size: 36396905
+      nfiles: 165
     outs:
     - path: src/lib/data-manifest.json
       hash: md5
-      md5: c9802b4ebc4238a13af5930411deede9
-      size: 15556
+      md5: e13cc143737f30288d3782b04406203e
+      size: 15618
+  prepare-maps:
+    cmd: papermill geo.ipynb -
+    deps:
+    - path: geo.ipynb
+      hash: md5
+      md5: 006f2d0f2a1aff04d9ddce6350a09f6e
+      size: 64239
+    outs:
+    - path: ../static/autoload-data/lad.geojson
+      hash: md5
+      md5: 809508e21dde7171851067dc7c225c1c
+      size: 1750469

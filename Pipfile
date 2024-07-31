@@ -12,6 +12,7 @@ geopandas = "*"
 bs4 = "*"
 dvc = "*"
 papermill = "*"
+matplotlib = "*"
 
 [dev-packages]
 
