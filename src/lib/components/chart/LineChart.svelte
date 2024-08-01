@@ -7,7 +7,7 @@
     import YAxis from './building-blocks/YAxis.svelte';
 	import LineSeries from './building-blocks/LineSeries.svelte';
 
-    import { pick } from '../../utils';
+    import { pick, transpose } from '../../utils';
 
     import type { AxisConfig, ChartData, ChartSeries, Range } from '../../types';
 
@@ -17,8 +17,6 @@
     export let stacked = false;
     export let xAxis: AxisConfig = {};
     export let yAxis: AxisConfig = {};
-
-    const transpose = <T>(m: T[][]) => m[0].map((_,i) => m.map(x => x[i]));
 
     const rangeReducer = (a: Range, v: number): Range => ({
         min: Math.min(a.min, v),

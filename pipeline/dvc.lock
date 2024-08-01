@@ -5,13 +5,13 @@ stages:
     deps:
     - path: apprenticeships.ipynb
       hash: md5
-      md5: e999bcaf68f09ab57250615dc23b523c
-      size: 7333
+      md5: 115365f0c933592a307229d33a375368
+      size: 13400
     outs:
     - path: ../static/autoload-data/apprenticeships/
       hash: md5
-      md5: dd0ff7efb27f346273807d259efc4612.dir
-      size: 653488
+      md5: 54e9d16ac92eaad84112a4ed78d59b80.dir
+      size: 667335
       nfiles: 159
   build-index:
     cmd: find static/autoload-data/ -type f | cut -d/ -f2- | jq --raw-input --slurp
@@ -19,13 +19,13 @@ stages:
     deps:
     - path: static/autoload-data/
       hash: md5
-      md5: b4065ac7172fdd3a48a9cfc4213848ff.dir
-      size: 33919013
+      md5: f41267676bb001a97d59ba5b5560e3df.dir
+      size: 33932860
       nfiles: 164
     outs:
     - path: src/lib/data-manifest.json
       hash: md5
-      md5: 38b60c854dcca2f4bf488180e590c78d
+      md5: 3cce569c641b4e073e2008a661a6392c
       size: 15587
   prepare-maps:
     cmd: papermill geo.ipynb -

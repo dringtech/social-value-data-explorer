@@ -11,3 +11,5 @@ export function pick(o, ...keys) {
         .filter(key => keys.includes(key))
         .reduce((a, k) => ({...a, [k]: o[k]}), {})
 }
+
+export const transpose = <T>(m: T[][]) => m[0].map((_,i) => m.map(x => x[i]));
