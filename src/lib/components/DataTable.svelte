@@ -7,15 +7,21 @@
     <thead>
         <tr>
             {#each columns as c}
-            <td>{ c }</td>
+            <th scope="col">{ c }</th>
             {/each}
         </tr>
     </thead>
-    {#each data as r}
-    <tr>
-        {#each columns as c}
-        <td>{ r[c] }</td>
+    <tbody>
+        {#each data as r}
+        <tr>
+            {#each columns as c, i}
+                {#if i > 0}
+                <td>{ r[c] }</td>
+                {:else}
+                <th scope="row">{ r[c] }</th>
+                {/if}
+            {/each}
+        </tr>
         {/each}
-    </tr>
-    {/each}
+    </tbody>
 </table>

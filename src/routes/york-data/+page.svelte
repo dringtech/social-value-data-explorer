@@ -47,9 +47,9 @@
 
 
     const series = [
-        { x: 'year', y: 'Higher Apprenticeship', colour: 'red' },
         { x: 'year', y: 'Intermediate Apprenticeship', colour: 'blue' },
         { x: 'year', y: 'Advanced Apprenticeship', colour: 'green' },
+        { x: 'year', y: 'Higher Apprenticeship', colour: 'red' },
     ]
     const xMapper = (x: Date) => x.valueOf();
     const xAxis = {
