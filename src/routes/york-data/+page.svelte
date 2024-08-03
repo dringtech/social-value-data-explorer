@@ -51,6 +51,10 @@
         { x: 'year', y: 'Advanced Apprenticeship', colour: 'green' },
         { x: 'year', y: 'Higher Apprenticeship', colour: 'red' },
     ]
+    const dataToSeries = (data) => series.map(({x, y}) => ({
+        name: y,
+        data: data.map(d => ({ x: d[x], y: d[y] }))
+    }))
 
     const tableColumns = ['Academic Year', ...series.map(s => s.y )];
     const addAcademicYear = d => ({ ...d, "Academic Year": academicYearFormatter(d.year) });
@@ -71,10 +75,7 @@
     <Loading />
 {:then data}
     <LineChart
-        series={ series.map(s => ({
-            name: s,
-            data: data.map(d => ({x: d[s.x], y: d[s.y]}))
-        })) }
+        series={ dataToSeries(data) }
         labels={ data.map(x => academicYearFormatter(x.year)) }
         { options }
     />
@@ -89,7 +90,7 @@
     <Loading />
 {:then data}
     <LineChart
-        series={ series.map(s => data.map(d => ({x: d[s.x], y: d[s.y]}))) }
+        series={ dataToSeries(data) }
         labels={ data.map(x => academicYearFormatter(x.year)) }
         { options }
     />
@@ -110,7 +111,7 @@
     <Loading />
 {:then data}
     <LineChart
-        series={ series.map(s => data.map(d => ({x: d[s.x], y: d[s.y]}))) }
+        series={ dataToSeries(data) }
         labels={ data.map(x => academicYearFormatter(x.year)) }
         { options }
     />
