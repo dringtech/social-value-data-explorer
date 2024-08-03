@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { runQuery } from '$lib/db';
     import Loading from '$lib/components/Loading.svelte';
-    import LineChart from '$lib/components/chart/LineChart.svelte';
+    import LineChart from '$lib/components/chartist/LineChart.svelte';
     import DataTable from '$lib/components/DataTable.svelte';
     import { academicYearFormatter } from '$lib/formatters';
 
@@ -51,13 +51,13 @@
         { x: 'year', y: 'Advanced Apprenticeship', colour: 'green' },
         { x: 'year', y: 'Higher Apprenticeship', colour: 'red' },
     ]
-    const xMapper = (x: Date) => x.valueOf();
-    const xAxis = {
-        labelFormatter: academicYearFormatter
-    }
 
     const tableColumns = ['Academic Year', ...series.map(s => s.y )];
     const addAcademicYear = d => ({ ...d, "Academic Year": academicYearFormatter(d.year) });
+
+    const options = {
+        height: '20em',
+    }
 </script>
 
 <h1>York data</h1>
@@ -70,7 +70,14 @@
 {#await starts}
     <Loading />
 {:then data}
-    <LineChart { data } { series } { xMapper } { xAxis }/>
+    <LineChart
+        series={ series.map(s => ({
+            name: s,
+            data: data.map(d => ({x: d[s.x], y: d[s.y]}))
+        })) }
+        labels={ data.map(x => academicYearFormatter(x.year)) }
+        { options }
+    />
     <DataTable data={ data.map(addAcademicYear) } columns={ tableColumns } />
 {:catch e}
     <p class="error">{ e }</p>
@@ -81,7 +88,11 @@
 {#await achievements}
     <Loading />
 {:then data}
-    <LineChart { data } { series } { xMapper } { xAxis }/>
+    <LineChart
+        series={ series.map(s => data.map(d => ({x: d[s.x], y: d[s.y]}))) }
+        labels={ data.map(x => academicYearFormatter(x.year)) }
+        { options }
+    />
     <DataTable data={ data.map(addAcademicYear) } columns={ tableColumns } />
 {:catch e}
     <p class="error">{ e }</p>
@@ -98,7 +109,11 @@
 {#await active}
     <Loading />
 {:then data}
-    <LineChart { data } { series } { xMapper } { xAxis }/>
+    <LineChart
+        series={ series.map(s => data.map(d => ({x: d[s.x], y: d[s.y]}))) }
+        labels={ data.map(x => academicYearFormatter(x.year)) }
+        { options }
+    />
     <DataTable data={ data.map(addAcademicYear) } columns={ tableColumns } />
 {:catch e}
     <p class="error">{ e }</p>
