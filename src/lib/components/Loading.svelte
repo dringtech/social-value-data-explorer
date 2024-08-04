@@ -1,5 +1,10 @@
+<script>
+  import spinner from '../spinner.svg';
+  export let message = 'Loading data';
+</script>
 <div class="loading">
-  <p>Loading...</p>
+  <img src={spinner} alt="Loading spinner"/>
+  <p>{ message }</p>
 </div>
 
 <style>
@@ -7,12 +12,12 @@
     box-sizing: border-box;
     width: 100%;
     height: 15rem;
-    color: black;
-    background: hsl(209, 92%, 46%);
     padding: 1rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 3em
+    gap: 1rem;
+    /* font-size: 2em; */
   }
 </style>
