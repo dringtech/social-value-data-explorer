@@ -1,50 +1,33 @@
 <script lang="ts">
+    import type { PageData } from './$types';
+	
 	import { runQuery } from '$lib/db';
     import Loading from '$lib/components/Loading.svelte';
     import LineChart from '$lib/components/chartist/LineChart.svelte';
     import DataTable from '$lib/components/DataTable.svelte';
     import { academicYearFormatter } from '$lib/formatters';
+    
+	export let data: PageData;
 
-    const ons_code = 'E06000014';
+    const f = (variable: string) => list => list.filter(row => row.variable == variable)
 
-    let dimension = 'starts';
-
-    $: starts = runQuery(`
+    $: apprenticeData = runQuery(`
         PIVOT (
-            SELECT year::DATE as year, apps_level AS level, CAST(value AS INTEGER) AS value
+            SELECT year::DATE as year, apps_level AS level, variable, CAST(value AS INTEGER) AS value
             FROM read_parquet('autoload-data/apprenticeships/**/*.parquet')
-            WHERE variable == '${dimension}'
-            AND ons_code == '${ons_code}'
+            WHERE variable IN (
+                'starts', 'achievements', 'active'
+            )
+            AND ons_code == '${data.onsCode}'
         )
         ON level
         USING first(value)
-        GROUP BY year;
-    `);
+        GROUP BY year, variable;
+    `)
 
-    $: achievements = runQuery(`
-        PIVOT (
-            SELECT year::DATE as year, apps_level AS level, CAST(value AS INTEGER) AS value
-            FROM read_parquet('autoload-data/apprenticeships/**/*.parquet')
-            WHERE variable == 'achievements'
-            AND ons_code == '${ons_code}'
-        )
-        ON level
-        USING first(value)
-        GROUP BY year;
-    `);
-
-    $: active = runQuery(`
-        PIVOT (
-            SELECT year::DATE as year, apps_level AS level, CAST(value AS INTEGER) AS value
-            FROM read_parquet('autoload-data/apprenticeships/**/*.parquet')
-            WHERE variable == 'active'
-            AND ons_code == '${ons_code}'
-        )
-        ON level
-        USING first(value)
-        GROUP BY year;
-    `);
-
+    $: starts = apprenticeData.then(f('starts'));
+    $: achievements = apprenticeData.then(f('achievements'));
+    $: active = apprenticeData.then(f('active'));
 
     const series = [
         { x: 'year', y: 'Intermediate Apprenticeship', colour: 'blue' },
