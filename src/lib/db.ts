@@ -26,10 +26,25 @@ export async function loadDb() {
 
 getConnection = loadDb();
 
+const cleanOutput = result => result
+  .toArray()
+  .map((row) => row.toJSON());
+
 export async function runQuery(sql: string) {
   const conn = await getConnection;
   return conn.query(sql)
-    .then(
-      result => result.toArray().map((row) => row.toJSON())
-    )
+    .then(cleanOutput);
+}
+
+export async function buildPreparedStatement(sql: string) {
+  const conn = await getConnection;
+  const stmt = await conn.prepare(sql);
+  
+  const query = async (...params: any[]) => stmt
+    .query(...params)
+    .then(cleanOutput);
+  return {
+    query,
+    close: async () => stmt.close(),
+  }
 }
