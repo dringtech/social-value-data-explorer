@@ -16,8 +16,6 @@
         }
     }
 
-    console.log({ labels, series });
-
     let chart;
     onMount(() => {
         chart = new LineChart(context, { labels, series }, config);

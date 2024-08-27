@@ -4,7 +4,6 @@
   export let colour = 'red';
   export let strokeWidth=3;
 
-  console.log({values});
   const scaler = getContext('scaler');
 
   const points = values.reduce((

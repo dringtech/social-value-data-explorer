@@ -53,7 +53,6 @@
         y: yRange,
     }
     setContext('range', readonly(range));
-    $: console.log(seriesData);
 </script>
 <Frame>
     <g class="axis" stroke="black" stroke-width="1">
