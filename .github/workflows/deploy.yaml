@@ -36,5 +36,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: chy-data-explorer
-          entrypoint: serve.ts
-          include: serve.ts build/
+          entrypoint: build/index.js
+          include: build/

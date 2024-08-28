@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "serve": "deno run --watch --allow-read --allow-net build/index.ts"
+    "serve": "deno run --watch --allow-read --allow-net build/index.js"
   },
   "deploy": {
     "project": "chy-data-explorer",
