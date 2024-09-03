@@ -10,6 +10,7 @@ export const load: PageLoad = () => {
         menu: [
             { title: 'York Data', href: '/york-data/' },
             // { title: 'Framework', href: '/framework/', },
-        ]
+        ],
+        description: "Data exploration of social value-related data."
     }
 }
