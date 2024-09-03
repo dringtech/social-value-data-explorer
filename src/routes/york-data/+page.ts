@@ -1,12 +1,14 @@
 import type { PageLoad } from './$types';
 
-export const prerender = false;
+// DuckDB is client-side only
 export const ssr = false;
 
-export const load: PageLoad = async () => {
+export const load: PageLoad = () => {
     const onsCode = 'E06000014';
 
 	return {
+		title: 'York data',
+		description: 'Prototype visualiser of data for York City Council, covering apprenticeships of residents.',
 		onsCode,
 	};
 };
