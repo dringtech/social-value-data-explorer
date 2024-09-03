@@ -3,7 +3,7 @@
     import { page } from '$app/stores';
 </script>
 <nav>
-	<ul>
+	<ul data-sveltekit-preload-data>
         {#each $page.data.menu as l}
 		<li><a href="{base}{l.href}">{l.title}</a></li>
         {/each}
