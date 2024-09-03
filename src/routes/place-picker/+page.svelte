@@ -2,6 +2,8 @@
 	import { getContext } from 'svelte';
 	import { loadDb } from '$lib/db';
 
+	export let data;
+
 	// Retrieve user store from context
 	const place = getContext('place');
 
@@ -15,7 +17,6 @@
 	import { uk } from '$lib/maps/bounds';
 	import { greyscale } from '$lib/maps/basemaps';
 	import { lightCarto } from '$lib/maps/labels';
-	import { lad } from '$lib/maps/features';
 
 	let map;
 
@@ -88,5 +89,5 @@
 			<Tooltip>{place.name}</Tooltip>
 		</Marker>
 	{/each}
-	<GeoJson feature={ lad }></GeoJson>
+	<GeoJson feature={ data.features.lad }></GeoJson>
 </Leaflet>

@@ -1,8 +1,11 @@
 <script>
+	import { setContext } from 'svelte';
 	import { base } from '$app/paths';
 	import { page } from '$app/stores';
-
+	import place from '$lib/stores/place';
 	import Nav from '$lib/components/Nav.svelte';
+
+	setContext('place', place);
 
 	import '$lib/style.css';
 </script>
