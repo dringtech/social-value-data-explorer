@@ -1,9 +1,11 @@
 <script>
-	import { base } from '$app/paths';
 	import { onNavigate } from '$app/navigation';
 	import { setContext } from 'svelte';
+	import { base } from '$app/paths';
 
 	import place from '$lib/stores/place';
+
+	import Nav from '$lib/components/Nav.svelte';
 
 	import '$lib/style.css';
 
@@ -24,13 +26,7 @@
 <header>
 	<a href="{base}/">Social Value Data Explorer</a>
 </header>
-<nav>
-	<ul>
-		<li><a href="{base}/york-data/">York data</a></li>
-		<!-- <li><a href="{base}/framework/">Framework</a></li> -->
-	</ul>
-</nav>
-
+<Nav />
 <main>
 	<slot />
 </main>
@@ -40,19 +36,6 @@
 		font-size: 3em;
 		font-weight: 100;
 		text-align: center;
-	}
-	nav > ul {
-		list-style: none;
-		display: flex;
-		justify-content: center;
-		/* margin-inline: -0.5em; */
-	}
-	nav li {
-		padding: 0.5em;
-	}
-	nav li:hover {
-		color: black;
-		background: yellow;
 	}
 	a {
 		color: inherit;
